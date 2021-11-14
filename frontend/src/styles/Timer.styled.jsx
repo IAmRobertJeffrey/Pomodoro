@@ -3,46 +3,121 @@ import styled from "styled-components";
 
 export const DigitContainer = styled.main`
 
-width: 100%;
 display: flex;
 flex-direction: row;
 height: 200px;
 align-items: center;
-justify-content: center;
+justify-content: flex-start;
 
 
 `
 
 export const TimerContainer = styled.main`
-align-items: flex-start;
-width: 50%;
-height: 500px;
 background-color: #2B2730;
+grid-area: timerContainer; 
+height: fit-content;
 display: flex;
-flex-direction: row;
-justify-content: center;
-
+align-items: center;
+justify-content: flex-start;
+flex-direction: column;
+flex-wrap: wrap;
 border-radius: 1rem;
+margin-top:50px;
+margin-bottom: 50px;
+margin-left: 50px;
 box-shadow:
-  1px 0.9px 1.8px rgba(0, 0, 0, 0.016),
-  2.1px 2px 4.1px rgba(0, 0, 0, 0.023),
-  3.7px 3.5px 6.9px rgba(0, 0, 0, 0.028),
-  5.6px 5.3px 10.7px rgba(0, 0, 0, 0.033),
-  8.4px 7.9px 15.8px rgba(0, 0, 0, 0.037),
-  12.3px 11.6px 23.2px rgba(0, 0, 0, 0.042),
-  18.4px 17.4px 34.8px rgba(0, 0, 0, 0.047),
-  29.3px 27.7px 55.5px rgba(0, 0, 0, 0.054),
-  55px 52px 104px rgba(0, 0, 0, 0.07)
+  2.8px 2.8px 2.2px rgba(0, 0, 0, 0.07),
+  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.05),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.042),
+  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.035),
+  41.8px 41.8px 33.4px rgba(0, 0, 0, 0.028),
+  100px 100px 80px rgba(0, 0, 0, 0.02)
 ;
 
 h1{
-    font-size:10rem;
-    
+    font-size:8rem;
+    margin: 0%;
     text-align: center;
+    font-size:clamp(0.5rem, 6vw, 7rem);
     
+    text-shadow: horizontal-offset vertical-offset blur color;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+
    
 }
 
+`
+
+export const TimerButton = styled.button`
+  width: 100%;
+  height:50px;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  color: white;
+  outline: none;
+  border:none;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  background-color: ${props => props.btnBackground};
+
+  &:hover
+  {
+    color: white;
+  }
+
+  &:active
+  {
+    background-color:${props => props.startStop === "Start" ? '#2AF598' : '#722b2b'}
+
+  }
+
+
+`
+
+export const TypeContainer = styled.div`
+width:100%;
+height:50px;
+display: flex;
+flex-direction: row;
+border-top-left-radius: 1rem;
+border-top-right-radius: 1rem;
+box-shadow:
+  0px 4px 1px rgba(0, 0, 0, 0.07),
+  0px 9.6px 2.4px rgba(0, 0, 0, 0.05),
+  0px 18px 4.5px rgba(0, 0, 0, 0.042),
+  0px 32.2px 8px rgba(0, 0, 0, 0.035),
+  0px 60.2px 15px rgba(0, 0, 0, 0.028),
+  0px 144px 36px rgba(0, 0, 0, 0.02)
+;
+`
+
+export const TypeOption = styled.div`
+width:33.33333%;
+height:50px;
+background-color:#7F738C;
+display: flex;
+transition: all 330ms;
+align-content: center;
+justify-content: center;
+align-items: center;
+font-size:1rem;
+cursor: pointer;
+
+p{
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 900;
+  padding: 2rem;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+&:hover
+{
+  background-color: #8B8198;
+  transition: all 330ms;
+}
 
 
 `
