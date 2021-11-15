@@ -4,6 +4,8 @@ import useSound from 'use-sound';
 import high from '../sound/highBeat.wav'
 import low from '../sound/lowBeat.wav'
 import { useEffect } from "react";
+import { render } from "react-dom";
+import { Helmet } from "react-helmet";
 
 const ToggleTimerButton = ({startStop, setStartStop, btnBackground, setBtnBackground, rotation, rotationCount, setRotationCount, setBackground, setBgPosition}) => {
 
@@ -33,6 +35,8 @@ const ToggleTimerButton = ({startStop, setStartStop, btnBackground, setBtnBackgr
             setBtnBackground("#833232")
             setStartStop("Pause")
             setBackground("linear-gradient(rgba(52, 47, 58, 1) 0%,rgba(95, 67, 141, 1) 100%)")
+           
+           
            
             
         }
@@ -71,7 +75,9 @@ const ToggleTimerButton = ({startStop, setStartStop, btnBackground, setBtnBackgr
     }
 
     return (
+      
         <TimerButton className="btn btn--beta" startStop={startStop} btnBackground={btnBackground} onMouseDown={checkFirst} onMouseUp={checkSecond} onClick={handleClick}><span>{startStop}</span></TimerButton>
+        
     )
 }
 

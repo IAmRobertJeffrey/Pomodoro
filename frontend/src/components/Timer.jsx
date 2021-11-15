@@ -5,7 +5,7 @@ import ToggleTimerButton from "./ToggleTimerButton"
 import useSound from 'use-sound';
 import finished from '../sound/completeSession.wav'
 
-const Timer = ({currentTimer, setCurrentTimer, rotation, rotationCount, setRotationCount, position, setPosition, choose1, choose2, choose3, setChoose1, setChoose2, setChoose3, setBackground}) => 
+const Timer = ({title, setTitle, currentTimer, setCurrentTimer, rotation, rotationCount, setRotationCount, position, setPosition, choose1, choose2, choose3, setChoose1, setChoose2, setChoose3, setBackground}) => 
 {
     const [time, setTime] = useState(currentTimer.quantity)
     const [startStop, setStartStop] = useState("Start")
@@ -17,6 +17,15 @@ const Timer = ({currentTimer, setCurrentTimer, rotation, rotationCount, setRotat
     var minutes = Math.floor(time / 60);
     var seconds = time - minutes * 60;
 
+    useEffect(()=>{
+      if(startStop === "Pause")
+      {
+        let zeroNeeded = false;
+        minutes.toString().length === 1 ? zeroNeeded = true : zeroNeeded = false;
+        const newMinutes = zeroNeeded ? `0${minutes}` : `${minutes}`;
+        seconds.toString().length === 1 ? setTitle(`${currentTimer.type}: ${newMinutes}:0${seconds}`) : setTitle(`${currentTimer.type}: ${newMinutes}:${seconds}`);
+      }
+    }, [setTitle, minutes, seconds, startStop, title, currentTimer.type])
 
      
 
@@ -30,6 +39,7 @@ const Timer = ({currentTimer, setCurrentTimer, rotation, rotationCount, setRotat
             const interval = setInterval(() => 
             {
               setTime(() => time - 1)
+              
             }, 1000);
             return () => clearInterval(interval);
           }
@@ -43,6 +53,7 @@ const Timer = ({currentTimer, setCurrentTimer, rotation, rotationCount, setRotat
               playFinished();
               setStartStop("Start")
               setTime(rotation[0].quantity)
+              setTitle("Long Break Session Finished!")
             }
             else
             {
@@ -54,6 +65,7 @@ const Timer = ({currentTimer, setCurrentTimer, rotation, rotationCount, setRotat
                 setCurrentTimer(rotation[0])
                 playFinished();
                 setStartStop("Start")
+                setTitle("Long Break Session Finished!")
               }
               else
               {
@@ -63,6 +75,7 @@ const Timer = ({currentTimer, setCurrentTimer, rotation, rotationCount, setRotat
                 setPosition(position + 1)
                 setCurrentTimer(rotation[position + 1])
                 playFinished();
+                setTitle(`${currentTimer.type} Session Finished!`)
                 setStartStop("Start")
               }
             }
@@ -71,12 +84,12 @@ const Timer = ({currentTimer, setCurrentTimer, rotation, rotationCount, setRotat
         }
         
         
-      },[startStop, time, playFinished, currentTimer, position, rotation, setCurrentTimer, setPosition, setBackground]);
+      },[startStop, time, playFinished, currentTimer, position, rotation, setCurrentTimer, setPosition, setBackground, minutes, seconds, setTitle]);
    
    
     return (
        <TimerContainer>
-           <TypeSelector position={position} setPosition={setPosition} choose1={choose1} choose2={choose2} choose3={choose3} setChoose1={setChoose1} setChoose2={setChoose2} setChoose3={setChoose3} rotation={rotation} rotationCount={rotationCount} setRotationCount={setRotationCount} currentTimer={currentTimer} setCurrentTimer={setCurrentTimer} startStop={startStop} time={time} setTime={setTime}/>
+           <TypeSelector title={title} setTitle={setTitle} position={position} setPosition={setPosition} choose1={choose1} choose2={choose2} choose3={choose3} setChoose1={setChoose1} setChoose2={setChoose2} setChoose3={setChoose3} rotation={rotation} rotationCount={rotationCount} setRotationCount={setRotationCount} currentTimer={currentTimer} setCurrentTimer={setCurrentTimer} startStop={startStop} time={time} setTime={setTime}/>
               <h1>{minutes.toString().length === 1 ? `0${minutes}` : minutes}:{seconds.toString().length === 1 ? `0${seconds}` : seconds}</h1>
             <ToggleTimerButton setBackground={setBackground} rotation={rotation} rotationCount={rotationCount} setRotationCount={setRotationCount} btnBackground={btnBackground} setBtnBackground={setBtnBackground} startStop={startStop} setStartStop={setStartStop}/>
        </TimerContainer>

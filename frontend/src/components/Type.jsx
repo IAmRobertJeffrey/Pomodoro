@@ -1,6 +1,6 @@
 import { TypeOption } from "../styles/Timer.styled"
 
-const Type = ({first, last, setTime, startStop, currentTimer, setCurrentTimer, rotation, change,  setChoice, choose1, choose2, choose3, setChoose1, setChoose2, setChoose3, position, setPosition}) => 
+const Type = ({title, setTitle, first, last, setTime, startStop, currentTimer, setCurrentTimer, rotation, change,  setChoice, choose1, choose2, choose3, setChoose1, setChoose2, setChoose3, position, setPosition}) => 
 {
 
    
@@ -11,7 +11,7 @@ const Type = ({first, last, setTime, startStop, currentTimer, setCurrentTimer, r
         {
             if(selectRotation.type === "Work")
             {
-                setCurrentTimer(rotation[0].type)   
+                setCurrentTimer(rotation[0])   
                 setPosition(0)
                 setChoose1(true) 
                 setChoose2(false)     
@@ -20,7 +20,7 @@ const Type = ({first, last, setTime, startStop, currentTimer, setCurrentTimer, r
             }
             else if(selectRotation.type === "Break")
             {
-                setCurrentTimer(rotation[1].type)    
+                setCurrentTimer(rotation[1])    
                 setPosition(-1) 
                 setChoose1(false) 
                 setChoose2(true)    
@@ -29,14 +29,14 @@ const Type = ({first, last, setTime, startStop, currentTimer, setCurrentTimer, r
             }
             else if(selectRotation.type === "LongBreak")
             {
-                setCurrentTimer(rotation[7].type)
+                setCurrentTimer(rotation[7])
                 setPosition(7)
                 setChoose1(false) 
                 setChoose2(false)    
                 setChoose3(true)   
                
             }
-            
+            setTitle("Pomodoro App")
             setTime(selectRotation.quantity)
         }
       
