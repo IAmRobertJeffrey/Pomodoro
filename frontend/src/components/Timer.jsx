@@ -71,7 +71,7 @@ const Timer = ({currentTimer, setCurrentTimer, rotation, rotationCount, setRotat
         }
         
         
-      },[startStop, time, playFinished, currentTimer, position, rotation, setCurrentTimer, setPosition]);
+      },[startStop, time, playFinished, currentTimer, position, rotation, setCurrentTimer, setPosition, setBackground]);
    
    
     return (
