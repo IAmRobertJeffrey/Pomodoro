@@ -1,26 +1,28 @@
-import { DigitContainer, TimerContainer } from "../styles/Timer.styled"
+import { TimerContainer } from "../styles/Timer.styled"
 import { useEffect, useState } from "react"
-import Digit from "./Digit"
 import TypeSelector from "./TypeSelector"
 import ToggleTimerButton from "./ToggleTimerButton"
 import useSound from 'use-sound';
 import finished from '../sound/completeSession.wav'
 
-const Timer = () => 
+const Timer = ({currentTimer, setCurrentTimer, rotation, rotationCount, setRotationCount, position, setPosition, choose1, choose2, choose3, setChoose1, setChoose2, setChoose3, setBackground}) => 
 {
-    const [time, setTime] = useState(5)
+    const [time, setTime] = useState(currentTimer.quantity)
     const [startStop, setStartStop] = useState("Start")
     const [btnBackground, setBtnBackground] = useState("#08aeea");
     const [playFinished] = useSound(finished, { volume: 0.05 });
     
   
-    const hours = Math.floor(time / 3600);
-    const newTime = time - hours * 3600;
-    var minutes = Math.floor(newTime / 60);
-    var seconds = newTime - minutes * 60;
+   
+    var minutes = Math.floor(time / 60);
+    var seconds = time - minutes * 60;
+
+
+     
 
         
-    useEffect(() => {
+    useEffect(() => 
+    {
         if(startStop === "Pause")
         {
           if(time > 0)
@@ -33,23 +35,50 @@ const Timer = () =>
           }
           else
           {
-            playFinished();
-            setStartStop("Start")
-            setTime(1500)
+            setBackground("linear-gradient(rgba(75,68,83,1) 0%, rgba(132,94,194,1) 100%)");
+            if(currentTimer.position === rotation.length - 1)
+            {
+              setPosition(0)
+              setCurrentTimer(rotation[0])
+              playFinished();
+              setStartStop("Start")
+              setTime(rotation[0].quantity)
+            }
+            else
+            {
+             
+              if(position === 7)
+              {
+                setTime(rotation[0].quantity)
+                setPosition(0)
+                setCurrentTimer(rotation[0])
+                playFinished();
+                setStartStop("Start")
+              }
+              else
+              {
+               
+
+                setTime(rotation[position + 1].quantity)
+                setPosition(position + 1)
+                setCurrentTimer(rotation[position + 1])
+                playFinished();
+                setStartStop("Start")
+              }
+            }
+           
           }
         }
         
         
-      },[startStop, time, playFinished]);
+      },[startStop, time, playFinished, currentTimer, position, rotation, setCurrentTimer, setPosition]);
    
    
     return (
        <TimerContainer>
-           <TypeSelector startStop={startStop} time={time} setTime={setTime}/>
-           <DigitContainer>
-           {hours > 0 ? <Digit value={hours}/> : null}{minutes.toString().length === 1 ? <Digit addZero={true} value={minutes}/> : <Digit addZero={false} value={minutes}/>}<h1>:</h1>{seconds.toString().length === 1 ? <Digit addZero={true} value={seconds}/> : <Digit addZero={false} value={seconds}/>}
-            </DigitContainer>
-            <ToggleTimerButton btnBackground={btnBackground} setBtnBackground={setBtnBackground} startStop={startStop} setStartStop={setStartStop}/>
+           <TypeSelector position={position} setPosition={setPosition} choose1={choose1} choose2={choose2} choose3={choose3} setChoose1={setChoose1} setChoose2={setChoose2} setChoose3={setChoose3} rotation={rotation} rotationCount={rotationCount} setRotationCount={setRotationCount} currentTimer={currentTimer} setCurrentTimer={setCurrentTimer} startStop={startStop} time={time} setTime={setTime}/>
+              <h1>{minutes.toString().length === 1 ? `0${minutes}` : minutes}:{seconds.toString().length === 1 ? `0${seconds}` : seconds}</h1>
+            <ToggleTimerButton setBackground={setBackground} rotation={rotation} rotationCount={rotationCount} setRotationCount={setRotationCount} btnBackground={btnBackground} setBtnBackground={setBtnBackground} startStop={startStop} setStartStop={setStartStop}/>
        </TimerContainer>
     )
 }

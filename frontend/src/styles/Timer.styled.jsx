@@ -13,6 +13,7 @@ justify-content: flex-start;
 `
 
 export const TimerContainer = styled.main`
+margin-right: 50px;
 background-color: #2B2730;
 grid-area: timerContainer; 
 height: fit-content;
@@ -34,12 +35,14 @@ box-shadow:
   100px 100px 80px rgba(0, 0, 0, 0.02)
 ;
 
+
+
 h1{
-    font-size:8rem;
+    font-size:6rem;
     margin: 0%;
     text-align: center;
-    font-size:clamp(0.5rem, 6vw, 7rem);
-    
+   
+    font-family: Mono;
     text-shadow: horizontal-offset vertical-offset blur color;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 
@@ -104,7 +107,19 @@ align-items: center;
 font-size:1rem;
 cursor: pointer;
 
+
+  background-color: ${props => (props.choose1 || props.choose2 || props.choose3 ? "#62586d" : null)};
+
+
+
 p{
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
   margin: 0;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 900;
@@ -113,11 +128,10 @@ p{
   letter-spacing: 0.05em;
 }
 
-&:hover
-{
-  background-color: #8B8198;
-  transition: all 330ms;
-}
+
+
+
+
 
 
 `
