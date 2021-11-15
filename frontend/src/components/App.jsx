@@ -3,7 +3,7 @@ import Header from "./Header";
 import Timer from "./Timer";
 import { useState, useEffect} from "react";
 import TaskContainer from "./TaskContainer";
-import {Helmet} from 'react-helmet';
+import {Helmet, HelmetProvider} from 'react-helmet-async';
 
 function App() 
 {
@@ -24,22 +24,19 @@ function App()
     {
         setChoose1(true)
         setChoose2(false)
-        setChoose3(false)
-        console.log("1");
+        setChoose3(false)      
     }
     else if(currentTimer === rotation[1] || currentTimer === rotation[3] || currentTimer === rotation[5])
     {
         setChoose1(false)
         setChoose2(true)
-        setChoose3(false)
-        console.log("2");
+        setChoose3(false)    
     }
     else if(currentTimer === rotation[7])
     {
         setChoose1(false)
         setChoose2(false)
         setChoose3(true)
-        console.log("2");
     }
 
 
@@ -48,9 +45,11 @@ function App()
 
   return (
     <AppWrapper bgPosition={bgPosition} background={background}>
+      <HelmetProvider>
         <Helmet>
           <title>{title}</title>
         </Helmet>
+      </HelmetProvider>
         <Header/>
         <Timer title={title} setTitle={setTitle} setBackground={setBackground} setBgPosition={setBgPosition} choose1={choose1} setChoose1={setChoose1} choose2={choose2} setChoose2={setChoose2} choose3={choose3} setChoose3={setChoose3} position={position} setPosition={setPosition} rotationCount={rotationCount} setRotationCount={setRotationCount} rotation={rotation} currentTimer={currentTimer} setCurrentTimer={setCurrentTimer}/>
         <TaskContainer/>

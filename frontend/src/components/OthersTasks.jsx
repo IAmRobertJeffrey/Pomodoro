@@ -1,8 +1,12 @@
-import { OthersTasksContainer } from "../styles/OthersTasks.styled"
+import { OthersTasksContainer, TasksHeader } from "../styles/OthersTasks.styled"
 
 const OthersTasks = () => {
     return (
-        <OthersTasksContainer/>
+        <OthersTasksContainer>
+             <TasksHeader>
+                <p>Other's Tasks</p>
+             </TasksHeader>
+        </OthersTasksContainer>
         
         
     )

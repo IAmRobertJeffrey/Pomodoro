@@ -1,8 +1,28 @@
-import { MyTasksContainer } from "../styles/MyTasks.styled"
+import { MyTasksContainer, TasksHeader, LeftPortion, RightPortion, AddTaskButton} from "../styles/MyTasks.styled";
 
-const MyTasks = () => {
+
+const MyTasks = () => 
+{
+    function handleAddClick()
+    {
+        console.log("hi");
+    }
+
+
     return (
-        <MyTasksContainer/>
+        <MyTasksContainer>
+            <TasksHeader>
+            <p>Your Task List</p>
+            </TasksHeader>
+            <LeftPortion>
+           
+            </LeftPortion>
+            <RightPortion>           
+               <AddTaskButton onClick={handleAddClick}>
+                   Add Task
+               </AddTaskButton>
+            </RightPortion>
+        </MyTasksContainer>
     )
 }
 

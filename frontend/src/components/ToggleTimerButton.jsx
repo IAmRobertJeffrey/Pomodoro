@@ -4,8 +4,7 @@ import useSound from 'use-sound';
 import high from '../sound/highBeat.wav'
 import low from '../sound/lowBeat.wav'
 import { useEffect } from "react";
-import { render } from "react-dom";
-import { Helmet } from "react-helmet";
+
 
 const ToggleTimerButton = ({startStop, setStartStop, btnBackground, setBtnBackground, rotation, rotationCount, setRotationCount, setBackground, setBgPosition}) => {
 
