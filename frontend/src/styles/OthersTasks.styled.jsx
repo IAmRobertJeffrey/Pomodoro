@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const OthersTasksContainer = styled.main`
 width: 25%;
-height: 100%;
+height: fit-content;
 background-color: #7F738C;
 margin-right: 50px;
 border-radius: 2rem;
@@ -25,4 +25,17 @@ p{
     margin: 0;
 }
 
+`
+
+export const TasksContent = styled.div`
+grid-area: 2 / 1 / 3 / 3;
+background-color: #7F738C;
+width:100%;
+height: fit-content;
+border-bottom-left-radius: 2rem;
+border-bottom-right-radius: 2rem;
+display: flex;
+flex-direction:column;
+font-size:1rem;
+padding: 2rem;
 `

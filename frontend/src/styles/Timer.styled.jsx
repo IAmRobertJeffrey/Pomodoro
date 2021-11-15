@@ -121,17 +121,17 @@ p{
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
   margin: 0;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: PoppinsThick;
   font-weight: 900;
   padding: 2rem;
   font-size: 1rem;
   letter-spacing: 0.05em;
 }
+`
 
-
-
-
-
-
+export const StopResetContainer = styled.div`
+width: 100%;
+display: flex;
+height: fit-content;
 
 `

@@ -1,4 +1,5 @@
-import { OthersTasksContainer, TasksHeader } from "../styles/OthersTasks.styled"
+import { OthersTasksContainer, TasksHeader, TasksContent } from "../styles/OthersTasks.styled"
+
 
 const OthersTasks = () => {
     return (
@@ -6,6 +7,10 @@ const OthersTasks = () => {
              <TasksHeader>
                 <p>Other's Tasks</p>
              </TasksHeader>
+             <TasksContent>
+                <p>No one else is currently engaged in a task :(</p>
+
+            </TasksContent>
         </OthersTasksContainer>
         
         

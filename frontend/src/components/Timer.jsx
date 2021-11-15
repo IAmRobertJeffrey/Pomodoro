@@ -1,9 +1,11 @@
-import { TimerContainer } from "../styles/Timer.styled"
+import { TimerContainer, StopResetContainer } from "../styles/Timer.styled"
 import { useEffect, useState } from "react"
 import TypeSelector from "./TypeSelector"
 import ToggleTimerButton from "./ToggleTimerButton"
 import useSound from 'use-sound';
 import finished from '../sound/completeSession.wav'
+import Stop from "./Stop";
+import Reset from "./Reset";
 
 const Timer = ({title, setTitle, currentTimer, setCurrentTimer, rotation, rotationCount, setRotationCount, position, setPosition, choose1, choose2, choose3, setChoose1, setChoose2, setChoose3, setBackground}) => 
 {
@@ -91,6 +93,10 @@ const Timer = ({title, setTitle, currentTimer, setCurrentTimer, rotation, rotati
        <TimerContainer>
            <TypeSelector title={title} setTitle={setTitle} position={position} setPosition={setPosition} choose1={choose1} choose2={choose2} choose3={choose3} setChoose1={setChoose1} setChoose2={setChoose2} setChoose3={setChoose3} rotation={rotation} rotationCount={rotationCount} setRotationCount={setRotationCount} currentTimer={currentTimer} setCurrentTimer={setCurrentTimer} startStop={startStop} time={time} setTime={setTime}/>
               <h1>{minutes.toString().length === 1 ? `0${minutes}` : minutes}:{seconds.toString().length === 1 ? `0${seconds}` : seconds}</h1>
+              <StopResetContainer>
+                <Stop/>
+                <Reset currentTimer={currentTimer} setTime={setTime}/>
+              </StopResetContainer>
             <ToggleTimerButton setBackground={setBackground} rotation={rotation} rotationCount={rotationCount} setRotationCount={setRotationCount} btnBackground={btnBackground} setBtnBackground={setBtnBackground} startStop={startStop} setStartStop={setStartStop}/>
        </TimerContainer>
     )
