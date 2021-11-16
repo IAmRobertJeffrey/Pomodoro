@@ -1,10 +1,18 @@
-import { MyTasksContainer, TasksHeader, LeftPortion, RightPortion, AddTaskButton, TasksContent} from "../styles/MyTasks.styled";
+import { MyTasksContainer, TasksHeader, LeftPortion, RightPortion, AddTaskButton, TasksContent, NoTasksMessage} from "../styles/MyTasks.styled";
+import { useState } from "react";
+import AddTask from "./AddTask";
+import Task from "./Task";
+
 
 const MyTasks = () => 
 {
+    const [myTasks,setMyTasks]= useState([]);
+    const [visible, setVisible] = useState(false)
+    
+    
     function handleAddClick()
     {
-        console.log("hi");
+        visible ? setVisible(false) : setVisible(true);
     }
 
     return (
@@ -20,7 +28,8 @@ const MyTasks = () =>
                 </AddTaskButton> 
             </RightPortion>  
             <TasksContent>
-              <p>Hello there</p>
+                <AddTask myTasks={myTasks} setMyTasks={setMyTasks} visible={visible} setVisible={setVisible}/>
+                {myTasks.length === 0 ? <NoTasksMessage>This is your task list, please add a task with the button at the top right of this box!</NoTasksMessage> : myTasks.map((current) => <Task key={current.id} task={current}/>)}
 
             </TasksContent>
         </MyTasksContainer>

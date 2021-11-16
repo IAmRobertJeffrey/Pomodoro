@@ -23,6 +23,7 @@ background-color: #41364e;
 
 p{
     margin: 0;
+    text-align: center;
 }
 
 `
@@ -38,4 +39,9 @@ display: flex;
 flex-direction:column;
 font-size:1rem;
 padding: 2rem;
+
+p{
+    font-size:1.25rem;
+    text-align: center;
+}
 `

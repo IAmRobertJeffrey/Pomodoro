@@ -101,4 +101,86 @@ display: flex;
 flex-direction:column;
 font-size:1rem;
 padding: 2rem;
+display: flex;
+`
+
+export const NoTasksMessage = styled.p`
+ font-size: 1.25rem;
+  text-align: center;
+`
+
+export const AddTaskContainer = styled.main`
+
+width: 100%;
+height: auto;
+justify-content:space-between;
+display: ${props => (props.visible ? "flex" : "none")};
+margin-bottom: 25px;
+input{
+  height: 50px;
+  width: 85%;
+  text-align: center;
+  outline: none;
+}
+
+button{
+  height: 50px;
+  width: 12%;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  font-family: Poppins;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border-radius: 0.5rem;
+  border:2px solid white;
+  background-color: #534563;
+  box-shadow:
+    0.2px 0.2px 0.4px rgba(0, 0, 0, 0.19),
+    0.5px 0.4px 1px rgba(0, 0, 0, 0.141),
+    0.9px 0.7px 1.8px rgba(0, 0, 0, 0.119),
+    1.4px 1.1px 3.1px rgba(0, 0, 0, 0.103),
+    2.4px 1.9px 5px rgba(0, 0, 0, 0.087),
+    4.2px 3.2px 8.8px rgba(0, 0, 0, 0.071),
+    9px 7px 19px rgba(0, 0, 0, 0.049)
+  ;
+  &:active
+  {
+      box-shadow: none;
+      background-color: #41364e;
+      border:2px solid #c5c5c5;
+  }
+}
+
+`
+
+export const TaskWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  margin-bottom: 25px;
+  background-color: #41364e;
+  box-shadow:
+    0.2px 0.2px 0.4px rgba(0, 0, 0, 0.19),
+    0.5px 0.4px 1px rgba(0, 0, 0, 0.141),
+    0.9px 0.7px 1.8px rgba(0, 0, 0, 0.119),
+    1.4px 1.1px 3.1px rgba(0, 0, 0, 0.103),
+    2.4px 1.9px 5px rgba(0, 0, 0, 0.087),
+    4.2px 3.2px 8.8px rgba(0, 0, 0, 0.071),
+    9px 7px 19px rgba(0, 0, 0, 0.049);
+    border:2px solid white;
+  ;
+  border-radius: 1rem;
+`
+
+export const TaskContent = styled.div`
+width: 70%;
+
+background-color: red;
+border-top-left-radius: 1rem;
+display: flex;
+border-bottom-left-radius: 1rem;
+align-items:center;
+padding: 5px;
 `
