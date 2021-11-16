@@ -60,7 +60,8 @@ height: 50px;
 `
 
 export const AddTaskButton = styled.button`
-width: 50%;
+cursor: pointer;
+width: 85px;
 height: 35px;
 z-index:10;
 color: white;
@@ -85,6 +86,7 @@ box-shadow:
 {
     box-shadow: none;
     background-color: #41364e;
+    border:2px solid #c5c5c5;
 }
 `
 
