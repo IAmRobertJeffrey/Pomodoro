@@ -172,15 +172,57 @@ export const TaskWrapper = styled.div`
     border:2px solid white;
   ;
   border-radius: 1rem;
+
+
+  form{
+    width: 20%;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items:center;
+
+
+  }
 `
 
 export const TaskContent = styled.div`
-width: 70%;
+width: 80%;
 
-background-color: red;
+
 border-top-left-radius: 1rem;
 display: flex;
 border-bottom-left-radius: 1rem;
 align-items:center;
-padding: 5px;
+padding: 25px;
+
+p{
+     word-break: break-word;
+    }
 `
+
+export const WorkingOnButton = styled.input`
+width:15%;
+height: 50px;
+
+`
+
+export const CompletedButton = styled.input`
+width:15%;
+height: 50px;
+
+`
+
+
+export const CheckBoxContainer = styled.div`
+width:100%;
+height: 100%;
+display: flex;
+justify-content: space-evenly;
+align-items:center;
+border-left: 2px solid white;
+
+`
+
