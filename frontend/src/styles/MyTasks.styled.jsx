@@ -46,6 +46,10 @@ grid-area: 1 / 1 / 2 / 2;
 background-color: #41364e;
 border-top-left-radius: 2rem;
 height: 50px;
+p{
+    margin: 0;
+    font-size: 2rem;
+}
 `
 
 export const RightPortion = styled.div`
@@ -110,12 +114,15 @@ display: flex;
 export const NoTasksMessage = styled.p`
  font-size: 1.25rem;
   text-align: center;
- 
+  min-height: 150px;
     word-break: break-word;
     border: 2px solid white;
     background-color: rgb(65, 54, 78);
     border-radius: 2rem;
     padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
     
 `
 
@@ -185,10 +192,10 @@ export const TaskWrapper = styled.div`
 
 
   form{
-    width: 20%;
+    width: 30%;
     
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
     align-content: center;
     justify-content: space-evenly;
@@ -200,7 +207,7 @@ export const TaskWrapper = styled.div`
 
 export const TaskContent = styled.div`
 width: 80%;
-
+border-right: 2px solid white;
 
 border-top-left-radius: 1rem;
 display: flex;
@@ -216,25 +223,54 @@ p{
 `
 
 export const WorkingOnButton = styled.input`
-width:15%;
-height: 50px;
+width:45px;
+height: 45px;
 
 `
 
 export const CompletedButton = styled.input`
-width:15%;
-height: 50px;
+width:45px;
+height: 45px;
 
 `
 
 
 export const CheckBoxContainer = styled.div`
 width:100%;
-height: 100%;
 display: flex;
 justify-content: space-evenly;
 align-items:center;
-border-left: 2px solid white;
+flex-direction: column;
+text-align: center;
+
+p{
+  margin: 0%;
+}
 
 `
 
+export const DeleteButton = styled.button`
+
+height:50px;
+background-color:#534563;
+color: white;
+border: 2px solid white;
+margin: 5px;
+border-radius: 0.5rem;
+box-shadow:
+    0.2px 0.2px 0.4px rgba(0, 0, 0, 0.19),
+    0.5px 0.4px 1px rgba(0, 0, 0, 0.141),
+    0.9px 0.7px 1.8px rgba(0, 0, 0, 0.119),
+    1.4px 1.1px 3.1px rgba(0, 0, 0, 0.103),
+    2.4px 1.9px 5px rgba(0, 0, 0, 0.087),
+    4.2px 3.2px 8.8px rgba(0, 0, 0, 0.071),
+    9px 7px 19px rgba(0, 0, 0, 0.049)
+  ;
+  &:active
+  {
+      box-shadow: none;
+      background-color: #41364e;
+      border:2px solid #c5c5c5;
+  }
+  font-family:Poppins;
+`
