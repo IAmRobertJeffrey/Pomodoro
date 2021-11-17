@@ -16,6 +16,7 @@ const Task = ({task, myTasks, setMyTasks}) => {
     
     function handleCheckBoxes(type)
     {
+        let taskListWithoutTask = myTasks.filter((current) => current.id !== task.id ? current : null)
 
         const taskCorrected = 
         {
@@ -24,16 +25,41 @@ const Task = ({task, myTasks, setMyTasks}) => {
             complete: task.complete,
             current: task.current
         }
-        type === "current" ? taskCorrected.current = !task.current : taskCorrected.current = task.current;
-        type === "complete" ? taskCorrected.complete = !task.complete : taskCorrected.complete = task.complete;
 
-        let taskListWithoutTask = myTasks.filter((current) => current.id !== task.id ? current : null)
+        if(type === "current")
+        {
+            let changedTaskList = taskListWithoutTask.map((current) => current.current === true ? Object.assign({}, current, {current: false}) : current)
+            taskCorrected.current = !task.current
+            changedTaskList.push(taskCorrected);
+            if(changedTaskList.length > 1)
+            {
+                console.log(changedTaskList);
+                changedTaskList.sort((a,b) => a.id - b.id)
+            }
+            localStorage.setItem("tasks", JSON.stringify(changedTaskList))
+            setMyTasks(changedTaskList)
+        }
+        else
+        {
+            taskCorrected.complete = !task.complete
+            taskListWithoutTask.push(taskCorrected);
+            taskListWithoutTask.sort((a, b) => a.id - b.id)
+            localStorage.setItem("tasks", JSON.stringify(taskListWithoutTask))
+            setMyTasks(taskListWithoutTask)
+        }
+        //type === "current" ? taskCorrected.current = !task.current : taskCorrected.current = task.current;
 
-        taskListWithoutTask.push(taskCorrected);
-        taskListWithoutTask.sort((a, b) => a.id - b.id)
-        localStorage.setItem("tasks", JSON.stringify(taskListWithoutTask))
-        setMyTasks(taskListWithoutTask)
-        console.log(localStorage.getItem("tasks"));
+
+
+        // type === "complete" ? taskCorrected.complete = !task.complete : taskCorrected.complete = task.complete;
+
+        
+
+        // taskListWithoutTask.push(taskCorrected);
+        // taskListWithoutTask.sort((a, b) => a.id - b.id)
+        // localStorage.setItem("tasks", JSON.stringify(taskListWithoutTask))
+        // setMyTasks(taskListWithoutTask)
+        // console.log(localStorage.getItem("tasks"));
     }
     
     return (

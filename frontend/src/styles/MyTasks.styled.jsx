@@ -226,6 +226,7 @@ export const WorkingOnButton = styled.input`
 width:45px;
 height: 45px;
 
+
 `
 
 export const CompletedButton = styled.input`
