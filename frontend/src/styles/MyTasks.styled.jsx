@@ -102,11 +102,21 @@ flex-direction:column;
 font-size:1rem;
 padding: 2rem;
 display: flex;
+
+
+
 `
 
 export const NoTasksMessage = styled.p`
  font-size: 1.25rem;
   text-align: center;
+ 
+    word-break: break-word;
+    border: 2px solid white;
+    background-color: rgb(65, 54, 78);
+    border-radius: 2rem;
+    padding: 25px;
+    
 `
 
 export const AddTaskContainer = styled.main`
@@ -197,9 +207,11 @@ display: flex;
 border-bottom-left-radius: 1rem;
 align-items:center;
 padding: 25px;
+justify-content: center;
 
 p{
      word-break: break-word;
+     
     }
 `
 

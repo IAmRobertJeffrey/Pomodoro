@@ -1,4 +1,5 @@
 import { OthersTasksContainer, TasksHeader, TasksContent } from "../styles/OthersTasks.styled"
+import {NoTasksMessage} from "../styles/MyTasks.styled";
 
 
 const OthersTasks = () => {
@@ -8,7 +9,7 @@ const OthersTasks = () => {
                 <p>Other's Tasks</p>
              </TasksHeader>
              <TasksContent>
-                <p>No one else is currently engaged in a task :(</p>
+                <NoTasksMessage>No one else is currently engaged in a task :(</NoTasksMessage>
 
             </TasksContent>
         </OthersTasksContainer>
