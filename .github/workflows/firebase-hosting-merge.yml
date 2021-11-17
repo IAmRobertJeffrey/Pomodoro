@@ -18,3 +18,4 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ROBERTS_POMODORO }}"
           channelId: live
           projectId: roberts-pomodoro
+          entryPoint: "./frontend"
